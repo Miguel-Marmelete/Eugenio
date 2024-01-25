@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use App\Models\Jogador;
+
 use App\Models\Sessao;
 use App\Models\Classificacao;
 use Illuminate\Support\Facades\DB;
@@ -13,13 +11,14 @@ class VerResultados extends Controller
 {
     function index(){
         // Obter a sessão mais recente
-        $sessaoRecente = Sessao::latest('PK_Sessao')->first()->PK_Sessao;
+        $sessionId = session("sessionId");
+        $sessao = Sessao::where('PK_Sessao',$sessionId)->first();
 
         // Obter as classificações dos jogadores
         $classificacoes = Classificacao::join('Teste', 'Classificacao.PK_Classificacao', '=', 'Teste.FK_Classificacao')
             ->join('Jogador', 'Teste.FK_Jogador', '=', 'Jogador.PK_Jogador')
             ->join('Sessao', 'Teste.FK_Sessao', '=', 'Sessao.PK_Sessao')
-            ->where('Sessao.PK_Sessao', $sessaoRecente)
+            ->where('Sessao.PK_Sessao', $sessao)
             ->groupBy('Jogador.PK_Jogador', 'Jogador.Nome')
             ->get([
                 'Jogador.Nome as Nome_Jogador',
