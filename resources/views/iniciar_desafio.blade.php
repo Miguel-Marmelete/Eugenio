@@ -18,7 +18,6 @@
                         echo '<label class="block font-bold mb-2">Configuração: '.session('configId').'</label>';
                     ?>
                     
-                    
                 </div>
                 <div class="mb-4">
                     <label for="jogadores" class="block font-bold mb-2">Jogadores</label>

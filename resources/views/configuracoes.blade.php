@@ -49,6 +49,8 @@
   
   <body class="bg-gray-200 align-items justify-content">
     <div class="container mx-auto h-full">
+      <div class="container mx-auto h-full">
+
         <form action="/setConfig" method="POST">
             <label for="configOptions">Escolha uma Configuração:</label><br>
             <select id="configId" name="configId">
@@ -56,9 +58,32 @@
                     <option value="<?php echo $configuracao->PK_Configuracao; ?>"><?php echo $configuracao->Titulo; ?></option>
                 <?php endforeach; ?>
             </select>
-        
             <button type="submit" id="confirmSessionBtn">Escolher Configuração</button>
         </form>
+
+      </div>
+      
+      <div class="container">
+          <form method="POST" action="/adicionarConfiguracao">
+  
+              <div class="form-group">
+                  <label for="titulo">Título:</label>
+                  <input type="text" name="titulo" class="form-control" required>
+              </div>
+  
+              <div class="form-group">
+                  <label for="tempo_configuracao">Tempo de Configuração:</label>
+                  <input type="time" name="tempo_configuracao" class="form-control" value="00:02:00" required>
+              </div>
+  
+              <div class="form-group">
+                  <label for="texto">Texto:</label>
+                  <textarea name="texto" class="form-control" rows="4" required></textarea>
+              </div>
+  
+              <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+      </div>
 
     </div>
   </body>

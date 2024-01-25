@@ -23,6 +23,8 @@ Route::get('/setSession', [SessaoController::class, 'setSession']);
 
 Route::post('/setConfig', [ConfiguracaoController::class, 'setConfig']);
 
+Route::post('/adicionarConfiguracao', [ConfiguracaoController::class, 'addConfig']);
+
 Route::get('/getAllConfigs', [ConfiguracaoController::class, 'getAllConfigs']);
 
 Route::get('/iniciar-desafio', [IniciarDesafio::class, 'index'])->name('iniciar-desafio');
