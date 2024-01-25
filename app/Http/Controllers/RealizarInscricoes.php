@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\View;
 use App\Models\Jogador;
 use App\Models\Teste;
 use App\Models\Sessao;
-
+use App\Models\Configuracao;
 class RealizarInscricoes extends Controller
 {
     function index() {
@@ -37,15 +37,18 @@ class RealizarInscricoes extends Controller
         //$ultimaSessao = Sessao::max('PK_Sessao');
         //$sessionId = session("sessionId");
         //$sessao = Sessao::where('PK_Sessao',$sessionId)->first();
-        
+
         //adicionar o maximo de pesquisas da configuraçao que existem
-        for ($i = 1; $i <= 6; $i++) {
+        $configuracoes = Configuracao::all();
+
+        foreach ($configuracoes as $configuracao) {
             $teste = new Teste();
             $teste->FK_Jogador = $jogador->PK_Jogador;
-            $teste->FK_Configuracao = $i;
+            $teste->FK_Configuracao = $configuracao->PK_Configuracao;
             $teste->FK_Sessao = session("sessionId");
             $teste->save();
         }
+       
         return redirect()->route('realizar-inscricoes');
     }
 }

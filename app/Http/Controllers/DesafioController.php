@@ -12,7 +12,7 @@ class DesafioController extends Controller
     function index(){
 
         // Obter a configuração selecionada
-        $configuracaoID = request()->get('configuracoes');
+        $configuracaoID = session("configId");
         $configuracao = Configuracao::find($configuracaoID);
 
         // Obter o jogador selecionado

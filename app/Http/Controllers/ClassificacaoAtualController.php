@@ -18,7 +18,7 @@ class ClassificacaoAtualController extends Controller
         $incorrectWords = $request->input('incorrectWords');
         $timePassed = $request->input('timePassed');
         $pontuacaoFinal = $request->input('pontuacaoFinal');
-        $PK_Configuracao = $request->input('configuracao');
+        $PK_Configuracao = session("configId");
         $PK_Jogador = $request->input('jogador');
 
         // Criar uma nova classificação, na BD, baseada nesses dados
@@ -31,22 +31,25 @@ class ClassificacaoAtualController extends Controller
         $classificacao->save();
 
         // Obter o teste que do utilizador para esta configuração
-        $thisTest = Teste::where('FK_Sessao', Sessao::latest('PK_Sessao')->first()->PK_Sessao)
+        $thisTest = Teste::where('FK_Sessao', session("sessionId"))
             ->where('FK_Configuracao', $PK_Configuracao)
             ->where('FK_Jogador', $PK_Jogador)
             ->first();
 
+
+            //debug
+            if ($thisTest === null) {return view('Home');}
         // Colocar a classificação criada no teste (Anteriormente era null)
         $thisTest->update(['FK_Classificacao' => $classificacao->PK_Classificacao]);
 
         // Obter a sessão atual
-        $sessaoRecente = Sessao::latest('PK_Sessao')->first()->PK_Sessao;
-
+        $sessionId = session("sessionId");
+        $sessao = Sessao::where('PK_Sessao',$sessionId)->first();
         // Obter as classificações do utilizador
         $classificacoes = Classificacao::join('Teste', 'Classificacao.PK_Classificacao', '=', 'Teste.FK_Classificacao')
             ->join('Jogador', 'Teste.FK_Jogador', '=', 'Jogador.PK_Jogador')
             ->join('Sessao', 'Teste.FK_Sessao', '=', 'Sessao.PK_Sessao')
-            ->where('Sessao.PK_Sessao', $sessaoRecente)
+            ->where('Sessao.PK_Sessao', $sessao)
             ->get(['Teste.FK_Configuracao as id_configuracao','Jogador.Nome as Nome_Jogador', 'Jogador.PK_Jogador as id_jogador', 'Classificacao.*']);
 
         return view('classificacao-config', [
