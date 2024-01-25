@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Classificacao;
+use App\Models\Configuracao;
 use App\Models\Sessao;
 use App\Models\Teste;
 use App\Models\Jogador;
@@ -24,6 +25,7 @@ class ClassificacaoAtualController extends Controller
         $pontuacaoFinal = $request->input('pontuacaoFinal');
         $PK_Configuracao = session("configId");
         $PK_Jogador = $request->input('jogador');
+        $expectedTextWithStyles= $request->input('expectedTextWithStyles');
 
         // Criar uma nova classificação, na BD, baseada nesses dados
         $classificacao = new Classificacao();
@@ -39,6 +41,13 @@ class ClassificacaoAtualController extends Controller
             ->where('FK_Configuracao', $PK_Configuracao)
             ->where('FK_Jogador', $PK_Jogador)
             ->first();
+        if($thisTest === null){
+            $thisTest = new Teste();
+            $thisTest->FK_Jogador = $PK_Jogador;
+            $thisTest->FK_Configuracao = session("configId");
+            $thisTest->FK_Sessao = session("sessionId");
+            $thisTest->save();
+        }
             /*
             $teste = new Teste();
             $teste->FK_Sessao = $sessionId;
@@ -67,7 +76,8 @@ class ClassificacaoAtualController extends Controller
         return view('classificacao-config', [
             'classificacao' => $classificacao,
             'NomeJogador' => Jogador::find($PK_Jogador)->Nome,
-            'idConfiguracao' => $PK_Configuracao
+            'Configuracao' => Configuracao::find($PK_Configuracao),
+            'expectedTextWithStyles' => $expectedTextWithStyles,
         ]);
 
     }

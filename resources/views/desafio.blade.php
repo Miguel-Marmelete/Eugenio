@@ -39,7 +39,7 @@
             let PONTUACAO_FINAL = 0;
             const PK_Configuracao = "{{ $configuracao->PK_Configuracao }}";
             const PK_Jogador = "{{ $jogador->PK_Jogador }}";
-
+            let textoComCertasErradas = "";
             console.log(CORRECT_WORDS);
             console.log(INCORRECT_WORDS);
             console.log(TIME_PASSED);
@@ -68,8 +68,9 @@
                     expectedTextWithStyles += expectedText[i];
                 }
             }
-      
+            
             expectedTextContainer.innerHTML = expectedTextWithStyles;
+            textoComCertasErradas = expectedTextWithStyles;
             });
       
             let intervalId;
@@ -102,7 +103,7 @@
                 console.log(WPM);
                 console.log(PONTUACAO_FINAL);
 
-                window.location.href = `/classificacao-config?wpm=${WPM}&correctWords=${CORRECT_WORDS}&incorrectWords=${INCORRECT_WORDS}&timePassed=${TIME_PASSED}&pontuacaoFinal=${PONTUACAO_FINAL}&jogador=${PK_Jogador}&configuracao=${PK_Configuracao}`;
+                window.location.href = `/classificacao-config?wpm=${WPM}&correctWords=${CORRECT_WORDS}&incorrectWords=${INCORRECT_WORDS}&timePassed=${TIME_PASSED}&pontuacaoFinal=${PONTUACAO_FINAL}&jogador=${PK_Jogador}&configuracao=${PK_Configuracao}&expectedTextWithStyles=${textoComCertasErradas}`;
             });
 
             inputText.addEventListener("focus", function() {

@@ -44,7 +44,7 @@
 <body class="font-mono text-2xl">
 <div class="container ">
     <a href="/" class="bg-red-500 text-white p-2 rounded-lg float-left text-sm">Menu Principal</a>
-    <h1 class="text-center text-3xl m-4 text-blue-700">Configuração {{ $idConfiguracao }}</h1>
+    <h1 class="text-center text-3xl m-4 text-blue-700">Configuração {{ $Configuracao->PK_Configuracao }}</h1>
     <table class="rounded-lg border shadow-2xl ">
         <thead>
         <tr>
@@ -67,6 +67,15 @@
                 </tr>
         </tbody>
     </table>
+    <div>
+        <?php
+            echo '<br>';
+            echo '<p>Revisão do Texto do Desafio:</p>';
+            echo '<p id="expected-text" class="text-gray-800 font-medium mt-5">'.$expectedTextWithStyles.'</p>';
+        ?>
+
+
+    </div>
     <div class="container">
         <!-- outro código aqui -->
         <div class="text-center">

@@ -16,6 +16,7 @@ class DesafioController extends Controller
         $configuracao = Configuracao::find($configuracaoID);
         if($configuracao === null){
             $configuracao = Configuracao::first();
+            session(['configId' => $configuracao->PK_Configuracao]);
         }
         // Obter o jogador selecionado
         $jogadorID = request()->get('jogadores');
