@@ -39,15 +39,14 @@ class RealizarInscricoes extends Controller
         //$sessao = Sessao::where('PK_Sessao',$sessionId)->first();
 
         //adicionar o maximo de pesquisas da configuraçao que existem
-        $configuracoes = Configuracao::all();
+        //$configuracoes = Configuracao::all();
 
-        foreach ($configuracoes as $configuracao) {
+       
             $teste = new Teste();
             $teste->FK_Jogador = $jogador->PK_Jogador;
-            $teste->FK_Configuracao = $configuracao->PK_Configuracao;
+            $teste->FK_Configuracao = session("configId");
             $teste->FK_Sessao = session("sessionId");
             $teste->save();
-        }
        
         return redirect()->route('realizar-inscricoes');
     }

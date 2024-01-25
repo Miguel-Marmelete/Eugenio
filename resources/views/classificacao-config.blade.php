@@ -57,18 +57,14 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($classificacoes->sortByDesc('Pontuacao_Final') as $classificacao)
-            @if($classificacao->id_configuracao == $idConfiguracao)
-                <tr class="@if($classificacao->id_jogador == $jogadorAtual) animate-pulse @endif {{ $classificacao->id_jogador == $jogadorAtual ? 'highlighted' : '' }}">
-                    <td>{{ $classificacao->Nome_Jogador }}</td>
+                <tr class="">
+                    <td>{{ $NomeJogador }}</td>
                     <td>{{ $classificacao->WPM }}</td>
                     <td>{{ $classificacao->QTD_Erros }}</td>
                     <td>{{ $classificacao->QTD_Certas }}</td>
                     <td>{{ $classificacao->Tempo }}</td>
                     <td>{{ $classificacao->Pontuacao_Final }}</td>
                 </tr>
-            @endif
-        @endforeach
         </tbody>
     </table>
     <div class="container">
