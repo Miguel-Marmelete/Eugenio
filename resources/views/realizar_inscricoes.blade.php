@@ -7,7 +7,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <style>
         h1{
-            color: blue;
+            color: rgb(254, 254, 254);
         }
         .sair{
             background-color: red;
@@ -25,12 +25,12 @@
 </head>
 <body class="bg-gray-100 h-screen flex justify-center items-center">
     <div class="flex flex-col items-center justify-center h-screen">
-        <h1 class="md:text-5xl text-center mx-auto my-10">Jogadores/Equipas</h1>
+        <h1 class="bg-blue-700 text-4xl font-bold ">Jogadores/Equipas</h1><br>
         <div class="flex items-center">
             <form action="{{url('adicionarJogador')}}" method="POST">
                 @csrf
-                <input class="w-64 h-10 px-4 py-2 mx-4" type="text" name="nomeJogador" id="nomeJogador" placeholder="Inserir nome de Jogador/Equipa">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">+</button>
+                <input class="w-64 h-10 px-4 py-2 mx-4" type="text" name="nomeJogador" id="nomeJogador" placeholder="Inserir nome de Jogador/Equipa"><br>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Inscrever</button>
             </form>
         </div>
         <table class="my-10 w-full text-center rounded-lg">
@@ -47,7 +47,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="{{url('')}}" class="sair bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Sair</a>
+        <a href="/iniciar-desafio" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Iniciar Desafio</a>
     </div>
 </body>
 </html>

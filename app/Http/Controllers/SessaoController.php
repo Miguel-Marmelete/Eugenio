@@ -26,7 +26,7 @@ class SessaoController extends Controller
 
     public function setSession(Request $request){
         session(['sessionId' => $request->query('sessionId')]);
-        return view('Home');
+        return view('escolher_sessao')->with('sessions', Sessao::all());
     }
     public function getAllSessions(){
         return view('escolher_sessao')->with('sessions', Sessao::all());

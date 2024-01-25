@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Título da Página</title>
-    <!-- Adicione links para folhas de estilo (CSS) ou scripts JavaScript, se necessário -->
 </head>
 <body>
 
@@ -19,7 +18,8 @@
         <button type="submit" id="confirmSessionBtn">Escolher Sessão</button>
     </form>
 
-    <!-- Adicione mais conteúdo da página, se necessário -->
-
+    <a href="/">
+        <button type="button">Menu Inicial</button>
+    </a>
 </body>
 </html>

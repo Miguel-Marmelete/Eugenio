@@ -62,7 +62,7 @@
         </form>
 
       </div>
-      
+
       <div class="container">
           <form method="POST" action="/adicionarConfiguracao">
   
@@ -84,6 +84,10 @@
               <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
       </div>
+
+      <a href="/">
+        <button type="button">Menu Inicial</button>
+    </a>
 
     </div>
   </body>

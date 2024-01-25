@@ -52,10 +52,7 @@
   <body class="bg-gray-200 align-items justify-content">
     <div class="container mx-auto h-full">
       <?php
-        
         echo '<button type="submit" id="getSessionsBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href=\'/clearSession\'">Terminar Sessão</button>';
-
-        
         ?>
       <h1 class="md:text-6xl text-xl font-bold text-blue-700 text-center mt-20">Circuito de Testes Eugénio</h1>
       <div class="container mx-auto text-center">
