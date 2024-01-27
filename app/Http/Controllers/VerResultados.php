@@ -18,7 +18,7 @@ class VerResultados extends Controller
         $classificacoes = Classificacao::join('Teste', 'Classificacao.PK_Classificacao', '=', 'Teste.FK_Classificacao')
             ->join('Jogador', 'Teste.FK_Jogador', '=', 'Jogador.PK_Jogador')
             ->join('Sessao', 'Teste.FK_Sessao', '=', 'Sessao.PK_Sessao')
-            ->where('Sessao.PK_Sessao', $sessao)
+            ->where('Sessao.PK_Sessao', $sessionId)
             ->groupBy('Jogador.PK_Jogador', 'Jogador.Nome')
             ->get([
                 'Jogador.Nome as Nome_Jogador',
