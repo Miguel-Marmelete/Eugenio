@@ -66,8 +66,8 @@
         </button>
     </div>
 </div>
-
-
+<script src="{{ asset('js/home_scripts.js') }}"></script>
+<script>session()</script>
 </body>
 
 </html>
