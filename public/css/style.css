@@ -91,7 +91,6 @@ button:hover {
 }
 
 .h1-title-container {
-
     height: fit-content;
 }
 
@@ -100,20 +99,27 @@ button:hover {
     height: 80px;
 }
 
+@media (max-width: 768px) {
+    .custom-logo {
+        width: 50px;
+        height: 50px;
+    }
+}
+
 /******************************  HOMEPAGE END *******************************************/
 
 .menu-btn-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 2rem;
 }
 
 .menu-btn-container-configurations {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 4rem;
 }
 
 /**********************************************************************/
@@ -143,5 +149,104 @@ button:hover {
 .end-session-button:hover {
     background-color: #c53030;
 }
+
+
+@media (max-width: 1024px) {
+    .main-container-desafio,
+    .choose-session-main-container,
+    .configurations-main-container,
+    .main-container-desafio {
+        width: 90%;
+    }
+
+    .main-container-desafio, button {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .h1-title-container {
+        font-size: 10.25rem;
+    }
+}
+
+.main-container-desafio {
+    display: flex;
+    flex-direction: column;
+}
+
+/************************* RESULTADOS GERAIS ***********************************************/
+
+
+.results-main-container {
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    /*border: red solid 2px;*/
+}
+
+.results-table {
+    text-align: center;
+    border-collapse: collapse;
+    background-color: rgba(26, 188, 156, 0.2);
+    width: 100%;
+    overflow: hidden;
+}
+
+.results-table th,
+.results-table td {
+    padding: 1.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.results-table thead tr {
+    background-color: rgba(164, 233, 219, 0.8);
+    border-bottom: 2px solid #16a085;
+}
+
+.results-table tbody tr:nth-child(even) {
+    background-color: rgba(149, 165, 166, 0.1);
+}
+
+.results-table tbody tr:hover {
+    background-color: rgba(18, 115, 243, 0.2);
+}
+
+.results-table th {
+    font-weight: 700;
+    color: #333;
+}
+
+.table-container {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+
+/********************** textarea ***************************/
+
+#expected-text {
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#input-text {
+    resize: none;
+    border: 2px solid #cbd5e0;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 18px;
+    line-height: 1.5;
+    width: 100%;
+    height: 200px; /* Adjust the height as needed */
+}
+
+#input-text:focus {
+    outline: none;
+    border-color: #38a169;
+}
+
 
 

@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Classificacao;
 use App\Models\Configuracao;
+use App\Models\Jogador;
 use App\Models\Sessao;
 use App\Models\Teste;
-use App\Models\Jogador;
+use Illuminate\Http\Request;
 
 class ClassificacaoAtualController extends Controller
 {
-    function index(Request $request){
+    function index(Request $request)
+    {
 
         // Obter a sessão atual
         $sessionId = session("sessionId");
-        $sessao = Sessao::where('PK_Sessao',$sessionId)->first();
+        $sessao = Sessao::where('PK_Sessao', $sessionId)->first();
 
         //Obter os dados passados por url
         $wpm = $request->input('wpm');
@@ -25,7 +26,7 @@ class ClassificacaoAtualController extends Controller
         $pontuacaoFinal = $request->input('pontuacaoFinal');
         $PK_Configuracao = session("configId");
         $PK_Jogador = $request->input('jogador');
-        $expectedTextWithStyles= $request->input('expectedTextWithStyles');
+        $expectedTextWithStyles = $request->input('expectedTextWithStyles');
 
         // Criar uma nova classificação, na BD, baseada nesses dados
         $classificacao = new Classificacao();
@@ -37,41 +38,19 @@ class ClassificacaoAtualController extends Controller
         $classificacao->save();
 
         // Obter o teste que do utilizador para esta configuração
-       $thisTest = Teste::where('FK_Sessao', session("sessionId"))
+        $thisTest = Teste::where('FK_Sessao', session("sessionId"))
             ->where('FK_Configuracao', $PK_Configuracao)
             ->where('FK_Jogador', $PK_Jogador)
             ->first();
-        if($thisTest === null){
+        if ($thisTest === null) {
             $thisTest = new Teste();
             $thisTest->FK_Jogador = $PK_Jogador;
             $thisTest->FK_Configuracao = session("configId");
             $thisTest->FK_Sessao = session("sessionId");
             $thisTest->save();
         }
-            /*
-            $teste = new Teste();
-            $teste->FK_Sessao = $sessionId;
-            $teste->FK_Configuracao = $PK_Configuracao;
-            $teste->FK_Jogador = $PK_Jogador;
-            $teste->FK_Classificacao = $classificacao->PK_Classificacao;
-            $teste->save();*/
 
-
-        //debug
-        //if ($thisTest === null) {return view('Home');}
-        // Colocar a classificação criada no teste (Anteriormente era null)
         $thisTest->update(['FK_Classificacao' => $classificacao->PK_Classificacao]);
-
-        
-        // Obter as classificações do utilizador
-        /*
-        $classificacoes = Classificacao::join('Teste', 'Classificacao.PK_Classificacao', '=', 'Teste.FK_Classificacao')
-            ->join('Jogador', 'Teste.FK_Jogador', '=', 'Jogador.PK_Jogador')
-            ->join('Sessao', 'Teste.FK_Sessao', '=', 'Sessao.PK_Sessao')
-            ->where('Sessao.PK_Sessao', $sessao)
-            ->get(['Teste.FK_Configuracao as id_configuracao','Jogador.Nome as Nome_Jogador', 'Jogador.PK_Jogador as id_jogador', 'Classificacao.*']);
-        */
-        //echo $classificacoes;
 
         return view('classificacao-config', [
             'classificacao' => $classificacao,

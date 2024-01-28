@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-pt">
 
 <head>
-    <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+    <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <title>Configurações</title>
-
 </head>
 
 <body class="bg-gray-200">
 
 <div class="h1-title-container">
-    <h1 class="md:text-6xl text-xl font-bold text-blue-700 text-center mt-12">
+    <h1 class="md:text-6xl text-4xl font-bold text-blue-700 text-center mt-12">
         Configurações</h1>
 </div>
 
-<div class="mx-auto p-8 bg-white rounded-lg shadow-lg lg:w-1/2 w-full mx-auto my-16">
+<div class="configurations-main-container mx-auto p-8 bg-white rounded-lg shadow-lg lg:w-1/2 w-full mx-auto my-16">
     <form action="/setConfig" method="POST" class="mb-10">
-        <label for="configOptions" class="block text-gray-700 text-sm font-bold mb-2">Escolha uma Configuração:</label>
+        @csrf
+        <label for="configOptions" class="block text-gray-700 text-xl font-bold mb-2">Escolha uma Configuração:</label>
         <select id="configId" name="configId" class="w-full border p-2 rounded">
-            <?php foreach ($configuracoes as $configuracao): ?>
-            <option value="<?php echo $configuracao->PK_Configuracao; ?>"><?php echo $configuracao->Titulo; ?></option>
-            <?php endforeach; ?>
+            @foreach($configuracoes as $configuracao)
+                <option value="{{ $configuracao->PK_Configuracao }}">{{ $configuracao->Titulo }}</option>
+            @endforeach
         </select>
 
         <div class="mb-20">
@@ -37,20 +37,21 @@
     </form>
 
     <form method="POST" action="/adicionarConfiguracao" class="mb-8">
+        @csrf
         <div class="mb-4">
-            <label for="titulo" class="block text-gray-700 text-sm font-bold mb-2">Título:</label>
+            <label for="titulo" class="block text-gray-700 text-xl font-bold mb-2">Título:</label>
             <input type="text" name="titulo" class="w-full border p-2 rounded"
                    placeholder="Insira o nome da nova configuração" required>
         </div>
 
         <div class="mb-4">
-            <label for="tempo_configuracao" class="block text-gray-700 text-sm font-bold mb-2">Tempo de
+            <label for="tempo_configuracao" class="block text-gray-700 text-xl font-bold mb-2">Tempo de
                 Configuração:</label>
             <input type="time" name="tempo_configuracao" class="w-full border p-2 rounded" value="00:02:00" required>
         </div>
 
         <div class="mb-4">
-            <label for="texto" class="block text-gray-700 text-sm font-bold mb-2">Texto:</label>
+            <label for="texto" class="block text-gray-700 text-xl font-bold mb-2">Texto:</label>
             <textarea name="texto" class="w-full border p-2 rounded" rows="4"
                       placeholder="Escreva o texto da nova configuração" required></textarea>
         </div>
