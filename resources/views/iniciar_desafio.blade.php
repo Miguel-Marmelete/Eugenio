@@ -31,7 +31,7 @@
             @csrf
             <div class="mb-4">
                 <?php
-                echo '<label class="text-xl block font-bold mb-2">Configuração: ' . session('configId') . '</label>';
+                echo '<label class="text-xl block font-bold mb-2">Configuração: ' . $configName . '</label>';
                 ?>
             </div>
             <div class="mb-4">

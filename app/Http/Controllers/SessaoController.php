@@ -29,8 +29,10 @@ class SessaoController extends Controller
 
     public function setSession(Request $request)
     {
-
-        session(['sessionId' => $request->query('sessionId')]);
+        $sessionId = $request->query('sessionId');
+        session(['sessionId' => $sessionId ]);
+        $session = Sessao::find($sessionId);
+        session(['sessionName' => $session->Name ]);
         return view('home');
     }
 
