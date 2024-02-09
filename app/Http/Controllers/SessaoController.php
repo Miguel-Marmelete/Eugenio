@@ -31,7 +31,7 @@ class SessaoController extends Controller
     {
 
         session(['sessionId' => $request->query('sessionId')]);
-        return view('escolher_sessao')->with('sessions', Sessao::all());
+        return view('home');
     }
 
     public function getAllSessions()

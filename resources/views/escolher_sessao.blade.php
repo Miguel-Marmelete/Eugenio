@@ -11,6 +11,7 @@
 
 <body class="bg-gray-200">
 
+<!--
 <div class="main-menu-btn">
     <a href="/">
         <button type="button" class="mt-4 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full">
@@ -18,7 +19,7 @@
         </button>
     </a>
 </div>
-
+-->
 <div class="h1-title-container">
     <h1 class="md:text-6xl text-4xl font-bold text-blue-700 text-center mt-12">
         Escolher uma sessão
@@ -49,7 +50,7 @@
         <button type="submit" id="confirmSessionBtn"
                 class="mt-4 bg-green-500 hover:bg-green-600
                     text-white font-bold py-2 px-4 rounded-full float-right"
-        >Escolher Sessão
+        >Abrir Sessão
         </button>
     </form>
 
