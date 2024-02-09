@@ -40,13 +40,10 @@
 
 <div class="main-container-options container mx-auto h-full mt-10">
     <div class="container mx-auto text-center">
-        @if(session()->has('configId'))
-            {{ session('configId') }}
-        @endif
-
+        
         <?php
         if (session()->has('sessionId')) {
-            echo session('sessionId');
+            
             echo '<button id="realizar-inscricoes-button" class="text-white font-bold py-2 px-4 rounded-full"
                     onclick="location.href=\'' . url('realizar-inscricoes') . '\'">Realizar Inscrições</button>';
             echo '<button class="text-white font-bold py-2 px-4 rounded-full"
