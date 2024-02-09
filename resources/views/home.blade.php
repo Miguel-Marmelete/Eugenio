@@ -25,9 +25,10 @@
 
     <div class="end-session-container">
         @if(session()->has('sessionId'))
-            <div>
-                {{ session('sessionName') }}
-            </div>
+        <div style="color: #336699; font-size: 16px; font-weight: bold;">
+                Sessão: {{ session('sessionName') }}
+        </div>
+
 
             <div>
                 <button type="submit" id="getSessionsBtn" class="end-session-button"
