@@ -27,21 +27,12 @@ class RealizarInscricoes extends Controller
     public function adicionarJogador(Request $request) {
 
         // Criar o jogador
-        $jogador = new Jogador();
-        $jogador->Nome = $request->input('nomeJogador');
-        $jogador->Idade = 0;
-        $jogador->save();
+            $jogador = new Jogador();
+            $jogador->Nome = $request->input('nomeJogador');
+            $jogador->Idade = 0;
+            $jogador->save();
 
 
-        // Criar os testes para as configurações
-        //$ultimaSessao = Sessao::max('PK_Sessao');
-        //$sessionId = session("sessionId");
-        //$sessao = Sessao::where('PK_Sessao',$sessionId)->first();
-
-        //adicionar o maximo de pesquisas da configuraçao que existem
-        //$configuracoes = Configuracao::all();
-
-       
             $teste = new Teste();
             $teste->FK_Jogador = $jogador->PK_Jogador;
             $teste->FK_Configuracao = session("configId");

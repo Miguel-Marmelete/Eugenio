@@ -24,10 +24,7 @@ class IniciarDesafio extends Controller
             session(['configId' => $configuracao->PK_Configuracao]);
         }
         $configName = $configuracao->Titulo;
-        //get first config if none selected
-        // Obter todas as configurações no sistema
-       // $configuracoes = Configuracao::all();
-
+       
         // Obter os jogadores inscritos na sessão
         $jogadores = Jogador::whereHas('testes', function($query) use ($sessao) {
             $query->whereHas('sessao', function($query) use ($sessao) {
