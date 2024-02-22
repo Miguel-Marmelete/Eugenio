@@ -33,8 +33,8 @@
             <tr>
                 <th>Jogador / Equipa</th>
                 <th>Palavras por minuto</th>
-                <th>Quantidade de erros</th>
                 <th>Quantidade de certas</th>
+                <th>Quantidade de erros</th>
                 <th>Tempo</th>
                 <th>Pontuação final</th>
             </tr>
